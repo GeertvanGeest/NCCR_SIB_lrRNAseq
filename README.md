@@ -3,9 +3,10 @@
 
 ## Be able to work comfortably on a remote server
 
-* For windows users: [MobaXterm](https://mobaxterm.mobatek.net/ "get MobaXterm") and [Notepad++](https://notepad-plus-plus.org/downloads/)
-* For mac os/linux users: [Atom](https://atom.io/) with packages like: `platform-ide-terminal` and `remote-edit-ni`
-* Or any other preferred way to login on a remote and work with scripts.
+* SSH and scripting for windows users: [MobaXterm](https://mobaxterm.mobatek.net/ "get MobaXterm") and [Notepad++](https://notepad-plus-plus.org/downloads/)
+* SSH and scripting for mac os/linux users: [Atom](https://atom.io/) with packages like: `platform-ide-terminal` and `remote-edit-ni`
+* Transferring files (both windows and unix-based systems): [FileZilla](https://filezilla-project.org/)
+* Or any other preferred way to login to a remote, transfer files and work with scripts.
 
 ## First login
 
