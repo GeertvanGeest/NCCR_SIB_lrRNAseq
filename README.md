@@ -8,6 +8,10 @@
 * Transferring files (both windows and unix-based systems): [FileZilla](https://filezilla-project.org/)
 * Or any other preferred way to login to a remote, transfer files and work with scripts.
 
+## Other software to install on your PC
+
+* [Integrative Genomics Viewer (IGV)](http://software.broadinstitute.org/software/igv/)
+
 ## First login
 
 ### Login to AWS EC2 remote server
