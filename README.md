@@ -59,7 +59,12 @@ To directly initiate and modify scripts on the remote server you can use plugins
 * Notepadd++: NppFTP
 * Atom: remote-edit-ni
 
-Use your username, server IP and ssh key in their respective settings.
+With the following details:
+* protocol: sftp
+* username: your username
+* hostname: server IP
+* port: 22
+* authentication/logon type: path to private key file
 
 ## Working on the cloud server
 
