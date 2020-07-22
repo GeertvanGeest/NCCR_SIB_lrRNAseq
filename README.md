@@ -63,5 +63,5 @@ Use your username, server IP and ssh key in their respective settings.
 
 ## Working on the cloud server
 
-The cloud server is a temporary instance for this workshop only. **It's a basic Ubuntu server, and there are no hard limits on memory or CPU usage.** 
+The cloud server is a temporary instance for this workshop only. Altough the computational resources should be more than enough, **it's a basic Ubuntu server, and there are no hard limits on memory or CPU usage.** 
 Take therefore into account that great power comes with great responsibility. Overloading it can result in a reboot, cancelling all running calculations.
