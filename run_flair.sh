@@ -1,17 +1,21 @@
 #!/bin/bash
 
+# mkdir ~/flair_output
+# mkdir ~/logs
 
-# minimap2 \
-# -ax splice \
-# -G 500k \
-# ./reference/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-# ./reads/ERR3577080_1.fastq.gz \
-# ./reads/ERR3577099_1.fastq.gz \
-# 2> minimap2.log \
-# | samtools sort \
-# | samtools view -bh > CACNA1C_combined.bam
-#
-# samtools index CACNA1C_combined.bam
+minimap2 \
+-ax splice \
+-G 500k \
+/data/lrrnaseq/references/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
+/data/lrrnaseq/reads/batch_combined/cerebellum-5238.fastq.gz \
+2> ~/logs/minimap2.log \
+| samtools sort \
+| samtools view -bh > ~/flair_output/CACNA1C_combined.bam
+
+samtools index ~/flair_output/CACNA1C_combined.bam
+
+# use hg38 in IGV for visualisation. works.
+
 #
 # python3 ./flair/bin/bam2Bed12.py \
 # -i CACNA1C_combined.bam \
@@ -56,10 +60,10 @@
 # 2> predictProductivity.log \
 # > CACNA1C_productivity.bed
 
-export PATH=$PATH:/Users/geertvangeest/Documents/NCCR_summerschool/flair:/Users/geertvangeest/Documents/NCCR_summerschool/flair/bin
-cd ./flair/bin/
-
-python3 plot_isoform_usage.py \
-../../CACNA1C_productivity.bed \
-../../counts_matrix.tsv \
-ENSG00000151067
+# export PATH=$PATH:/Users/geertvangeest/Documents/NCCR_summerschool/flair:/Users/geertvangeest/Documents/NCCR_summerschool/flair/bin
+# cd ./flair/bin/
+#
+# python3 plot_isoform_usage.py \
+# ../../CACNA1C_productivity.bed \
+# ../../counts_matrix.tsv \
+# ENSG00000151067
