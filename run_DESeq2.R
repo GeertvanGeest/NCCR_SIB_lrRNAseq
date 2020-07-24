@@ -4,6 +4,7 @@ coldata$V1 <- gsub("dorsolateral_prefrontal", "dlp", coldata$V1)
 tiss_subj <- do.call(rbind, strsplit(coldata$V1, '-'))
 coldata <- data.frame(tissue = factor(tiss_subj[,1]), subject = factor(tiss_subj[,2]), row.names = coldata$V1)
 
+cts["ENST00000399641_ENSG00000151067",]
 
 library(DESeq2)
 
@@ -50,3 +51,31 @@ pheatmap(sampleDistMatrix,
 
 DESeq2::plotPCA(vsd, intgroup=c("tissue"))
 DESeq2::plotPCA(vsd, intgroup=c("subject"))
+
+coldata2 <- coldata
+coldata2$tissue <- as.character(coldata2$tissue)
+ewc <- endsWith(coldata2$tissue, "cortex")
+coldata2$tissue[ewc] <- "cortex"
+
+dds2 <- DESeqDataSetFromMatrix(countData = cts,
+                              colData = coldata2,
+                              design = ~ tissue)
+dds2 <- DESeq(dds2)
+
+res <- results(dds2, contrast = c("tissue", "cerebellum", "cortex"))
+
+plotMA(res, ylim=c(-3,3))
+
+plotCounts(dds2, gene=which.min(res$padj), intgroup="tissue")
+
+maxg <- res@rownames[which.min(res$padj)]
+cts[maxg,]
+rel_counts <- t(apply(cts, 1, function(x){
+  x/colSums(cts)
+}))
+
+relc_max <- rel_counts[maxg,]
+relc_high <- rel_counts["ENST00000399641_ENSG00000151067",]
+
+boxplot(relc_max ~ coldata2$tissue)
+boxplot(relc_high ~ coldata2$tissue)
