@@ -68,5 +68,26 @@ With the following details:
 
 ## Working on the cloud server
 
-The cloud server is a temporary instance for this workshop only. Altough the computational resources should be more than enough, **it's a basic Ubuntu server, and there are no hard limits on memory or CPU usage.** 
+### Some warnings
+
+The cloud server is a temporary instance for this workshop only. Altough the computational resources should be more than enough, **it's a basic Ubuntu server, and there are no hard limits on memory or CPU usage.**
 Take therefore into account that great power comes with great responsibility. Overloading it can result in a reboot, cancelling all running calculations.
+
+### Detaching a job
+
+On this server, there is no job scheduler, so everything is run directly from the command line. That means that if a process is running, the command line will be busy, and the job will be killed upon logout. To circumvent this, there are several methods to 'detach' the screen or prevent a 'hangup signal' of a job runnig in the background that will terminate your running job.
+The software `screen` or `tmux` can be used to detach your screen, and all messages to stderr or stdout (if not redirected) will be printed to the (detached) console. Use these if you're comfortable with those.
+
+Another, more basic, program to prevent the 'hangup signal' is `nohup`. Use it like so:
+
+```
+nohup [YOUR COMMAND] &
+```
+
+So, for running e.g. `samtools index` this would be:
+
+```
+nohup samtools index alignment.bam &
+```
+
+Anything written to stdout or stderr will be written to the file `nohup.out` in your current working directory. 
