@@ -31,6 +31,12 @@ We will be doing a differential isoform expression analysis on this publicly ava
   * Isoform detection and quantification: [`flair`](https://github.com/BrooksLabUCSC/flair)
   * Differential expression analysis: [`DESeq2`](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
 
+## Excersises
+* [Excercises day 1](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day1.md)
+* [Excercises day 2](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day2.md)
+* [Excercises day 3](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day3.md)
+* Presentations (after the course)
+
 ## Working on the cloud server
 
 ### Some warnings

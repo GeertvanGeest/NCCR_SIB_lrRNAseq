@@ -1,6 +1,6 @@
 # Exercises day 1
 
-## First login (individual; 1 hour)
+## 1.1 First login (individual; 1 hour)
 
 ### Login to AWS EC2 remote server
 You will receive an e-mail shortly before the workshop with a key, username and IP address to login on a cloud server.
