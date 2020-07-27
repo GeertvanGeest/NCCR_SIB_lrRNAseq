@@ -1,9 +1,43 @@
 # Exercises day 1
 
-## 1.1 Quality control (individual; 30 minutes)
+## First login (individual; 1 hour)
 
-Check out the summary statistics and visualisations thereof of a single fastq file:
+### Login to AWS EC2 remote server
+You will receive an e-mail shortly before the workshop with a key, username and IP address to login on a cloud server.
+Login like this:
+
+```sh
+ssh -i path/to/key/key_[USERNAME].pem [USERNAME]@[AWS_IP]
 ```
+
+### Initiate conda
+
+Once you have logged in, initiate conda:
+
+```sh
+/opt/miniconda3/bin/conda init
+```
+
+This modifies your `.bashrc`. So logout and login again, and you can use conda.
+
+### Setup your favourite editor to work remotely
+
+To directly initiate and modify scripts on the remote server you can use plugins:
+* Notepadd++: NppFTP
+* Atom: remote-edit-ni
+
+With the following details:
+* protocol: sftp
+* username: your username
+* hostname: server IP
+* port: 22
+* authentication/logon type: path to private key file
+
+## 1.2 Quality control (individual; 30 minutes)
+
+Check out the summary statistics and visualisations of a single fastq file:
+
+```sh
 NanoPlot \
 --fastq /data/lrrnaseq/reads/cerebellum-5238-batch2.fastq.gz \
 --N50 \
@@ -11,22 +45,15 @@ NanoPlot \
 -o ~/compare_nanoplot_fastqc
 ```
 
-### Question 1.1A:
-* Check out the file ... There seems to be a bias towards specific nucleotides in the beginning of the reads. Is that a problem?
-
-## 1.2 Quality control (group work; 30 minutes)
-
-Do QC on the same file with [`fastqc`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). `fastqc` is preinstalled. Check out the helper of fastqc like so: `fastqc --help`.
-
 ### Question 1.2A:
-* Compare the outputs of `fastqc` and `NanoPlot`. Do you have a preference for one of the two?
+* Check out the file ... There seems to be a bias towards specific nucleotides in the beginning of the reads. Is that a problem?
 
 ## 1.3 Read alignment (individual; 1 hour)
 
 The sequence aligner [`minimap2`](https://github.com/lh3/minimap2) is specifically developed for (splice-aware) alignment of long reads. Checkout the helper `minimap2 --help` and/or the [github readme](https://github.com/lh3/minimap2).
 
 ### Question 1.3A:
-* What would be the most logical parameter to the option `-x`?
+* What would be the most logical parameter for our dataset to the option `-x`?
 
 Introns can be quite long in mammals; up to a few hundred kb. Look up the CACNA1C gene at the [UCSC genome browser](https://genome-euro.ucsc.edu/cgi-bin/hgGateway?redirect=manual&source=genome.ucsc.edu) and roughly estimate the length of the longest intron.
 
@@ -35,7 +62,9 @@ Introns can be quite long in mammals; up to a few hundred kb. Look up the CACNA1
 
 Modify the command below for `minimap2` and run it from a script:
 
-```
+```sh
+#!/usr/bin/env bash
+
 minimap2 \
 -a \
 -x [PARAMETER] \
@@ -52,7 +81,9 @@ samtools index ~/cerebellum-5238-batch2.bam
 
 Start the job for the read alignment for all the fastq files. It might run for more than an hour, so make sure you run it in the background with `nohup` (see README.md)
 
-```
+```sh
+#!/usr/bin/env bash
+
 mkdir ~/read_alignment
 
 minimap2 \

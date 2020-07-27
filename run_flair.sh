@@ -6,16 +6,16 @@
 ## minimap2 runs in about 90 mins
 ## probably less time with 6 cpu
 
-# minimap2 \
-# -ax splice \
-# -G 500k \
-# /data/lrrnaseq/references/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-# /data/lrrnaseq/reads/batch_combined/*.fastq.gz \
-# 2> ~/logs/minimap2.log \
-# | samtools sort \
-# | samtools view -bh > ~/flair_output/CACNA1C_combined.bam
-#
-# samtools index ~/flair_output/CACNA1C_combined.bam
+minimap2 \
+-ax splice \
+-G 500k \
+/data/lrrnaseq/references/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
+/data/lrrnaseq/reads/batch_combined/*.fastq.gz \
+2> ~/logs/minimap2.log \
+| samtools sort \
+| samtools view -bh > ~/flair_output/CACNA1C_combined.bam
+
+samtools index ~/flair_output/CACNA1C_combined.bam
 
 # use hg38 in IGV for visualisation. works.
 
