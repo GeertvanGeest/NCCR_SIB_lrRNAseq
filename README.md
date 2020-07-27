@@ -2,7 +2,9 @@
 
 ## Pre-course preparations
 
-### Be able to work comfortably on a remote server
+We will be mainly working on an Amazon Web Services ([AWS](https://aws.amazon.com/]))  Elastic Cloud (EC2) server. Our Ubuntu server behaves like a 'normal' remote server, and can be approached through `ssh` with a username, key and IP address. All participant will we granted access to a personal home directory.
+
+Before the course make sure you can comfortably work on a remote server. Meaning that you can add approach it through the shell, modify scripts and transfer files:
 
 * SSH and scripting for windows users: [MobaXterm](https://mobaxterm.mobatek.net/ "get MobaXterm") and [Notepad++](https://notepad-plus-plus.org/downloads/)
 * SSH and scripting for mac os/linux users: [Atom](https://atom.io/) with packages like: `platform-ide-terminal` and `remote-edit-ni`
