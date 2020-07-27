@@ -2,9 +2,9 @@
 
 ## Pre-course preparations
 
-We will be mainly working on an Amazon Web Services ([AWS](https://aws.amazon.com/]))  Elastic Cloud (EC2) server. Our Ubuntu server behaves like a 'normal' remote server, and can be approached through `ssh` with a username, key and IP address. All participant will we granted access to a personal home directory.
+We will be mainly working on an Amazon Web Services ([AWS](https://aws.amazon.com/]))  Elastic Cloud (EC2) server. Our Ubuntu server behaves like a 'normal' remote server, and can be approached through `ssh` with a username, key and IP address. All participants will we granted access to a personal home directory.
 
-Before the course make sure you can comfortably work on a remote server. Meaning that you can add approach it through the shell, modify scripts and transfer files:
+Before the course, make sure you can comfortably work on a remote server. This means that you can approach it through the shell, modify scripts and transfer files:
 
 * SSH and scripting for windows users: [MobaXterm](https://mobaxterm.mobatek.net/ "get MobaXterm") and [Notepad++](https://notepad-plus-plus.org/downloads/)
 * SSH and scripting for mac os/linux users: [Atom](https://atom.io/) with packages like: `platform-ide-terminal` and `remote-edit-ni`
@@ -19,7 +19,7 @@ Before the course make sure you can comfortably work on a remote server. Meaning
 The general aim of the workshop is to get an introduction on:
 * Assessing quality of long-read sequencing data
 * Methods for sequence alignment of long reads and quantification of expression
-* Differential isoform expression
+* Differential isoform expression analysis
 
 We will be working with data from:
 
@@ -27,13 +27,13 @@ Clark, M. B. et al (2020). **Long-read sequencing reveals the complex splicing p
 
 The authors used full-transcript amplicon sequencing with Oxford Nanopore Technology of CACNA1C, a gene associated with psychiatric risk.
 
-We will be doing a differential isoform expression analysis on this publicly available dataset starting from the fastq files:
+We will be performing a differential isoform expression analysis on this publicly available dataset starting from the fastq files, with the following tools:
   * Quality control: [`NanoPlot`](https://github.com/wdecoster/NanoPlot)
   * Sequence alignment: [`minimap2`](https://github.com/lh3/minimap2)
   * Isoform detection and quantification: [`flair`](https://github.com/BrooksLabUCSC/flair)
   * Differential expression analysis: [`DESeq2`](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
 
-## Excersises
+## Excersises per day can be found here:
 * [Excercises day 1](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day1.md)
 * [Excercises day 2](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day2.md)
 * [Excercises day 3](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day3.md)
