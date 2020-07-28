@@ -72,7 +72,7 @@ And let's see which isoform is most significantly different between the two:
 
 ```r
 View(res)
-plotCounts(dds2, gene=which.min(res$padj), intgroup="tissue")
+DESeq2::plotCounts(dds2, gene=which.min(res$padj), intgroup="tissue")
 ```
 
 ## 3.2 Biological meaning
