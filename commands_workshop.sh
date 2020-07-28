@@ -22,6 +22,7 @@
 #
 # samtools index ~/parietal_cortex-5238-batch1.bam
 
+## start: 11:11
 mkdir ~/read_alignment
 
 minimap2 \
@@ -34,3 +35,37 @@ minimap2 \
 | samtools view -bh > ~/read_alignment/CACNA1C_combined.bam
 
 samtools index ~/read_alignment/CACNA1C_combined.bam
+
+mkdir ~/flair_output
+
+python3 ~/flair/bin/bam2Bed12.py \
+-i ~/read_alignment/CACNA1C_combined.bam \
+> ~/flair_output/CACNA1C_combined.bed12
+
+python3 ~/flair/flair.py correct \
+-q ~/flair_output/CACNA1C_combined.bed12 \
+-g /data/references/GRCh38.p13.chr12.fa \
+-f /data/references/Homo_sapiens.GRCh38.100.gtf \
+-o ~/flair_output/CACNA1C 2> ~/logs/flair_correct.log
+
+READS=`ls /data/reads/lrrnaseq/batch_combined/*.fastq.gz | tr "\n" ","`
+READS="${READS%?}" #remove last comma
+
+python3 ~/flair/flair.py collapse \
+-g /data/references/GRCh38.p13.chr12.fa \
+-r $READS \
+-q ~/flair_output/CACNA1C_all_corrected.bed \
+-f /data/references/Homo_sapiens.GRCh38.100.gtf \
+-s 3 \
+-t 4 \
+-o ~/flair_output/CACNA1C.collapse \
+--keep_intermediate \
+2> ~/logs/flair_collapse.log
+
+cd ~/flair_output
+
+python3 ~/flair/flair.py quantify \
+-r /data/reads/lrrnaseq/batch_combined/reads_manifest.tsv \
+-i ~/flair_output/CACNA1C.collapse.isoforms.fa \
+-t 4 \
+2> ~/logs/flair_quantify.log
