@@ -1,6 +1,8 @@
 # Exercises day 2
 
-## 2.1 Prepare FLAIR (individual; 30 minutes)
+## 2.1 Prepare FLAIR
+><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 30 minutes
+
 FLAIR is a set of python scripts that can be used to identify and quantify (new) isoforms based on alignment files of long-read sequencing data. We're basically following the pipeline as described [here](https://github.com/BrooksLabUCSC/flair).
 
 To use FLAIR first clone the git repository, and activate the (pre-configured) conda environment:
@@ -21,7 +23,8 @@ python3 ~/flair/bin/bam2Bed12.py \
 > ~/flair_output/CACNA1C_combined.bed12
 ```
 
-## 2.2 Run flair (group, 2 hours)
+## 2.2 Run flair
+><img border="0" src="https://www.svgrepo.com/show/220819/group-team.svg" width="30" height="30"> 2 hours
 
 Generate (and run) a shell script to run the modules `flair.py correct`, `flair.py collapse` and `flair.py quantify`. To do this, carefully follow the manual at https://github.com/BrooksLabUCSC/flair. Document your script carefully so you can easily re-run the analysis.
 

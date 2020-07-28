@@ -5,6 +5,7 @@ In the below exercises we will analyse the differential isoform expression. To d
 In this markdown file, we'll showcase a basic analysis as can be done by DESeq2. However, if there's time left, try to go a bit deeper and try for example different ways of visualisation, normalisation or experimental design.
 
 ## 3.1 Run DESeq2
+><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
 
 Load the data into R and modify it to fit DESeq2:
 
@@ -75,10 +76,11 @@ plotCounts(dds2, gene=which.min(res$padj), intgroup="tissue")
 ```
 
 ## 3.2 Biological meaning
+><img border="0" src="https://www.svgrepo.com/show/220819/group-team.svg" width="30" height="30"> 2 hours
 
 Try to answer one or more of the following questions:
 * Which isoform is most differentially expressed between cerebellum and cortex? Is it a new isoform? Did you find the same as in the publication?
 * Is there a difference between the relative number of productive expressed isoforms between the tissues?
 * How are the samples correlated? Is there a hierarchical clustering as expected?
 
-Summarize your findings in a ~5-slide presentation to show to the other participants.
+Summarize your findings of the entire project in a 20 minute presentation to show to the other participants.

@@ -1,6 +1,8 @@
 # Exercises day 1
 
-## 1.1 First login (individual; 1 hour)
+## 1.1 First login
+><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
+
 
 ### Login to AWS EC2 remote server
 You will receive an e-mail shortly before the workshop with a key, username and IP address to login on a cloud server.
@@ -33,7 +35,8 @@ With the following details:
 * port: 22
 * authentication/logon type: path to private key file
 
-## 1.2 Quality control (individual; 30 minutes)
+## 1.2 Quality control
+><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 30 minutes
 
 Check out the summary statistics and visualisations of a single fastq file:
 
@@ -48,7 +51,8 @@ NanoPlot \
 ### Question 1.2A:
 * Check out the file ... There seems to be a bias towards specific nucleotides in the beginning of the reads. Is that a problem?
 
-## 1.3 Read alignment (individual; 1 hour)
+## 1.3 Read alignment
+><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
 
 The sequence aligner [`minimap2`](https://github.com/lh3/minimap2) is specifically developed for (splice-aware) alignment of long reads. Checkout the helper `minimap2 --help` and/or the [github readme](https://github.com/lh3/minimap2).
 
@@ -77,7 +81,8 @@ minimap2 \
 samtools index ~/cerebellum-5238-batch2.bam
 ```
 
-## 1.4 Read alignment entire dataset (group work; 30 minutes)
+## 1.4 Read alignment entire dataset
+><img border="0" src="https://www.svgrepo.com/show/220819/group-team.svg" width="30" height="30"> 30 minutes
 
 Start the job for the read alignment for all the fastq files. It might run for more than an hour, so make sure you run it in the background with `nohup` (see README.md)
 
