@@ -44,7 +44,6 @@ Let's start with a PCA:
 
 ```r
 DESeq2::plotPCA(ntd, intgroup=c("tissue"))
-DESeq2::plotPCA(ntd, intgroup=c("subject"))
 ```
 
 It seems that cortex samples cluster, and cerebellum is most different from the rest. Let's change the experimental design:
@@ -54,6 +53,7 @@ coldata2 <- coldata
 coldata2$tissue <- as.character(coldata2$tissue)
 ewc <- endsWith(coldata2$tissue, "cortex")
 coldata2$tissue[ewc] <- "cortex"
+coldata2$tissue <- factor(coldata2$tissue)
 
 dds2 <- DESeq2::DESeqDataSetFromMatrix(countData = cts,
                               colData = coldata2,
@@ -71,7 +71,7 @@ res <- DESeq2::results(dds2, contrast = c("tissue", "cerebellum", "cortex"))
 And let's see which isoform is most significantly different between the two:
 
 ```r
-View(res)
+res
 DESeq2::plotCounts(dds2, gene=which.min(res$padj), intgroup="tissue")
 ```
 
