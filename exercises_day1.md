@@ -3,7 +3,6 @@
 ## 1.1 First login
 ><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
 
-
 ### Login to AWS EC2 remote server
 You will receive an e-mail shortly before the workshop with a key, username and IP address to login on a cloud server.
 Login like this:
@@ -34,6 +33,31 @@ With the following details:
 * hostname: server IP
 * port: 22
 * authentication/logon type: path to private key file
+
+### Some important directories
+
+* **home:** Your home directory you can approach directly with  typing `cd`, and if you want a specific directory within home you can use tilde `~` expansion. For example:
+```sh
+cd ~/flair
+```
+* **reads:** The reads are stored in two flavours: batch separated and batch combined. This is because the authors used two different sequence runs. The different runs have different quality scores but the samples within runs is not well balanced. Therefore for quality control we use the sequence files separated in batches at:
+```sh
+cd /data/reads/lrrnaseq
+```
+A subdirectory of this directory contains the batch combined files:
+```sh
+cd /data/reads/lrrnaseq/batch_combined
+```
+
+* **references:** as the reference sequence we use chromosome 12 of GRCh38.p13, with GRCh38.100 as gtf.
+The sequence of chr12 can be found here:
+```
+/data/references/GRCh38.p13.chr12.fa
+```
+And the gtf here:
+```
+/data/references/Homo_sapiens.GRCh38.100.gtf
+```
 
 ## 1.2 Quality control
 ><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 30 minutes
