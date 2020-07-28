@@ -42,14 +42,23 @@ Check out the summary statistics and visualisations of a single fastq file:
 
 ```sh
 NanoPlot \
---fastq /data/lrrnaseq/reads/cerebellum-5238-batch2.fastq.gz \
+--fastq /data/reads/lrrnaseq/parietal_cortex-5238-batch1.fastq.gz \
 --N50 \
---prefix cerebellum-5238-batch2_ \
--o ~/compare_nanoplot_fastqc
+--prefix parietal_cortex-5238-batch1_ \
+-o ~/nanoplot
 ```
 
 ### Question 1.2A:
-* Check out the file ... There seems to be a bias towards specific nucleotides in the beginning of the reads. Is that a problem?
+* There is not a wide distribution of read length. Is that expected?
+
+```sh
+nanoQC \
+-o ~/nanoplot \
+/data/reads/lrrnaseq/parietal_cortex-5238-batch1.fastq.gz
+```
+
+### Question 1.2B:
+* Check out the file nanoQC.html There seems to be a bias towards specific nucleotides in the beginning of the reads. Is that a problem?
 
 ## 1.3 Read alignment
 ><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
@@ -64,7 +73,13 @@ Introns can be quite long in mammals; up to a few hundred kb. Look up the CACNA1
 ### Question 1.3B:
 * How does this relate to the default parameter to option `-G` of `minimap2`?
 
-Modify the command below for `minimap2` and run it from a script:
+Before running `minimap2` first activate its conda environment:
+
+```sh
+conda activate flair_env
+```
+
+Then, modify the command below for `minimap2` and run it from a script.
 
 ```sh
 #!/usr/bin/env bash
@@ -73,12 +88,12 @@ minimap2 \
 -a \
 -x [PARAMETER] \
 -G [PARAMETER] \
-/data/lrrnaseq/references/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-/data/lrrnaseq/reads/cerebellum-5238-batch2.fastq.gz \
+/data/references/GRCh38.p13.chr12.fa \
+/data/reads/lrrnaseq/parietal_cortex-5238-batch1.fastq.gz \
 | samtools sort \
-| samtools view -bh > ~/cerebellum-5238-batch2.bam
+| samtools view -bh > ~/parietal_cortex-5238-batch1.bam
 
-samtools index ~/cerebellum-5238-batch2.bam
+samtools index ~/parietal_cortex-5238-batch1.bam
 ```
 
 ## 1.4 Read alignment entire dataset
@@ -95,8 +110,8 @@ minimap2 \
 -a \
 -x [PARAMETER] \
 -G [PARAMETER] \
-/data/lrrnaseq/references/Homo_sapiens.GRCh38.dna.chromosome.12.fa \
-/data/lrrnaseq/reads/batch_combined/*.fastq.gz \
+/data/references/GRCh38.p13.chr12.fa \
+/data/reads/lrrnaseq/batch_combined/*.fastq.gz \
 | samtools sort \
 | samtools view -bh > ~/read_alignment/CACNA1C_combined.bam
 
