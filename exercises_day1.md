@@ -1,7 +1,7 @@
 # Exercises day 1
 
 ## 1.1 First login
-><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
+><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 30 minutes
 
 ### Login to AWS EC2 remote server
 You will receive an e-mail shortly before the workshop with a key, username and IP address to login on a cloud server.
@@ -60,13 +60,13 @@ And the gtf here:
 ```
 
 ## 1.2 Quality control
-><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 30 minutes
+><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
 
 Check out the summary statistics and visualisations of a single fastq file:
 
 ```sh
 NanoPlot \
---fastq /data/reads/lrrnaseq/parietal_cortex-5238-batch1.fastq.gz \
+--fastq /data/reads/lrrnaseq/cerebellum-5238-batch2.fastq.gz \
 --N50 \
 --prefix parietal_cortex-5238-batch1_ \
 -o ~/nanoplot
@@ -75,14 +75,20 @@ NanoPlot \
 ### Question 1.2A:
 * There is not a wide distribution of read length. Is that expected?
 
+Also calculate the summary statistics with `fastqc` and compare them with the `NanoPlot` result:
+
 ```sh
-nanoQC \
--o ~/nanoplot \
-/data/reads/lrrnaseq/parietal_cortex-5238-batch1.fastq.gz
+fastqc \
+/data/reads/lrrnaseq/cerebellum-5238-batch2.fastq.gz \
+-o ~/fastqc
 ```
 
-### Question 1.2B:
-* Check out the file nanoQC.html There seems to be a bias towards specific nucleotides in the beginning of the reads. Is that a problem?
+### Question 1.2B
+* There's a pretty obvious difference in mean read quality scores between the `NanoPlot` and `fastqc` output. How does that affect the expected error rate?
+
+> **HINT:** Find the equation to calculate error probability from quality score on [Wikipedia](https://en.wikipedia.org/wiki/Phred_quality_score)
+
+> **SEE ALSO:** This [blog](https://gigabaseorgigabyte.wordpress.com/2017/06/26/averaging-basecall-quality-scores-the-right-way/) of the author of NanoPlot, and this [thread](https://github.com/wdecoster/NanoPlot/issues/191). 
 
 ## 1.3 Read alignment
 ><img border="0" src="https://www.svgrepo.com/show/14756/person-silhouette.svg" width="30" height="30"> 1 hour
