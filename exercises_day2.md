@@ -40,3 +40,7 @@ READS=`ls /data/reads/lrrnaseq/batch_combined/*.fastq.gz | tr "\n" ","`
 READS="${READS%?}" #remove last comma
 ```
 > **HINT2:** For visualisation of (intermediate) files you can use IGV. It accepts `.bam`, `.bed12` and `.gtf` files. The human genome hg38 should already be available after you installed IGV.
+
+### Go to:
+* [Exercises day 3](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day3.md)
+* [Main page](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq)
