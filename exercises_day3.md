@@ -12,12 +12,12 @@ Load the data into R and modify it to fit DESeq2:
 ```r
 # read count data and metadata (coldata)
 cts <- read.delim("~/flair_output/counts_matrix.tsv", row.names = 1)
-coldata <- read.delim("~/reads_manifest.tsv", header = F)
+coldata <- read.delim("/data/reads/lrrnaseq/batch_combined/reads_manifest.tsv", header = F)
 
 # make sample names a bit shorter:
 coldata$V1 <- gsub("dorsolateral_prefrontal", "dlp", coldata$V1)
 
-# modify coldata
+# modify coldata to fit DESeq2
 tiss_subj <- do.call(rbind, strsplit(coldata$V1, '-'))
 coldata <- data.frame(tissue = factor(tiss_subj[,1]), subject = factor(tiss_subj[,2]), row.names = coldata$V1)
 
@@ -66,12 +66,21 @@ Let's compare all cortex samples with cerebellum samples:
 dds2 <- DESeq2::DESeq(dds2)
 
 res <- DESeq2::results(dds2, contrast = c("tissue", "cerebellum", "cortex"))
+
+res
 ```
 
 And let's see which isoform is most significantly different between the two:
 
 ```r
-res
+most_significant_isoform <- res@rownames[which.min(res$padj)]
+most_significant_isoform
+
+```
+
+And visualise the difference between the tissues in expression:
+
+```r
 DESeq2::plotCounts(dds2, gene=which.min(res$padj), intgroup="tissue")
 ```
 
@@ -84,3 +93,6 @@ Try to answer one or more of the following questions:
 * How are the samples correlated? Is there a hierarchical clustering as expected?
 
 Summarize your findings of the entire project in a 20 minute presentation to show to the other participants.
+
+### Go to:
+* [Main page](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq)
