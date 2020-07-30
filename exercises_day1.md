@@ -129,7 +129,7 @@ samtools index ~/parietal_cortex-5238-batch1.bam
 ## 1.4 Read alignment entire dataset
 ><img border="0" src="https://www.svgrepo.com/show/220819/group-team.svg" width="30" height="30"> 30 minutes
 
-Start the job for the read alignment for all the fastq files. It might run for more than an hour, so make sure you run it in the background with `nohup` (see README.md)
+Start the job for the read alignment for all the fastq files. It will take a few hours, so make sure you run it in the background with `nohup` (see README.md)
 
 ```sh
 #!/usr/bin/env bash
@@ -147,3 +147,7 @@ minimap2 \
 
 samtools index ~/read_alignment/CACNA1C_combined.bam
 ```
+
+### Go to:
+* [Exercises day 2](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq/blob/master/exercises_day2.md)
+* [Main page](https://github.com/GeertvanGeest/NCCR_SIB_lrRNAseq)
