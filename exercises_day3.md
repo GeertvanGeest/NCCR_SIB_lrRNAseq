@@ -21,8 +21,8 @@ coldata$V1 <- gsub("dorsolateral_prefrontal", "dlp", coldata$V1)
 tiss_subj <- do.call(rbind, strsplit(coldata$V1, '-'))
 coldata <- data.frame(tissue = factor(tiss_subj[,1]), subject = factor(tiss_subj[,2]), row.names = coldata$V1)
 
-head(cts[,1:10])
-head(coldata)
+head(cts[,1:4])
+coldata
 
 ```
 
@@ -54,7 +54,12 @@ coldata2$tissue <- as.character(coldata2$tissue)
 ewc <- endsWith(coldata2$tissue, "cortex")
 coldata2$tissue[ewc] <- "cortex"
 coldata2$tissue <- factor(coldata2$tissue)
+coldata2
+```
 
+And make a new DESeq2 object
+
+```r
 dds2 <- DESeq2::DESeqDataSetFromMatrix(countData = cts,
                               colData = coldata2,
                               design = ~ tissue)
@@ -81,7 +86,7 @@ most_significant_isoform
 And visualise the difference between the tissues in expression:
 
 ```r
-DESeq2::plotCounts(dds2, gene=which.min(res$padj), intgroup="tissue")
+DESeq2::plotCounts(dds2, gene=most_significant_isoform, intgroup="tissue")
 ```
 
 ## 3.2 Biological meaning
